@@ -105,17 +105,21 @@ class Editor extends Component {
     return (
       <div class={style.container}>
         <div>
-          <div
-            class={style.image}
-            id="image"
-            style={{
-              background: "url(" + this.state.image + ") no-repeat",
-              width: this.state.imageWidth + "px",
-              height: this.state.imageHeight + "px",
-            }}
-          >
-            {this.state.image ? blurryBlocks : ""}
-          </div>
+          {this.state.image ? (
+            <div
+              class={style.image}
+              id="image"
+              style={{
+                backgroundImage: "url(" + this.state.image + ")",
+                aspectRatio:
+                  this.state.imageWidth + "/" + this.state.imageHeight,
+              }}
+            >
+              {this.state.image ? blurryBlocks : ""}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div>
           <input type="file" name="myImage" onChange={this.onImageChange} />

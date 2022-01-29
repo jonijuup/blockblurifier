@@ -43,13 +43,19 @@ class Editor extends Component {
   };
 
   render() {
-    const { blockWidth, blur, cornerRadius, heightRatio, amount, eraser } =
+    const { columns, rows, blur, cornerRadius, heightRatio, eraser } =
       useControls({
-        blockWidth: {
+        columns: {
           value: 10,
           min: 4,
           max: 50,
           step: 0.1,
+        },
+        rows: {
+          value: 50,
+          min: 1,
+          max: 100,
+          step: 1,
         },
         blur: {
           value: 100,
@@ -69,35 +75,34 @@ class Editor extends Component {
           max: 10,
           step: 0.1,
         },
-        amount: {
-          value: 100,
-          min: 1,
-          max: 1000,
-          step: 1,
-        },
+
         eraser: true,
       });
 
     function changeVisibility(e) {
       if (eraser) {
         e.target.style.cursor = "not-allowed";
-        e.target.style.opacity = 0;
+        /*let oldOpacity = e.target.style.opacity ? e.target.style.opacity : 1;
+        e.target.style.opacity =
+          e.target.style.opacity > 0 ? oldOpacity - 0.1 : oldOpacity;*/
       } else {
         e.target.style.cursor = "copy";
-        e.target.style.opacity = 1;
+        /*let oldOpacity = e.target.style.opacity ? e.target.style.opacity : 1;
+        e.target.style.opacity =
+          e.target.style.opacity < 1 ? oldOpacity + 0.1 : oldOpacity;*/
       }
     }
 
-    const blurryBlocks = [...Array(amount)].map((e, i) => (
+    const blurryBlocks = [...Array(columns * rows)].map((e, i) => (
       <div
         class={style.blurryblock}
         key={i}
         onPointerOver={changeVisibility}
         style={{
-          width: blockWidth + "%",
+          width: 100 / columns + "%",
           backdropFilter: "blur(" + blur + "px)",
           borderRadius: cornerRadius + "px",
-          height: blockWidth / heightRatio + "%",
+          height: 100 / rows + "%",
         }}
       />
     ));

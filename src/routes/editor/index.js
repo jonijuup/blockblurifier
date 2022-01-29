@@ -118,7 +118,6 @@ class Editor extends Component {
           </div>
         </div>
         <div>
-          <h1>Select Image</h1>
           <input type="file" name="myImage" onChange={this.onImageChange} />
           {/* Dom to image doesn't know how to render backdropFilter effects, fuck 
 					{this.state.image ? (

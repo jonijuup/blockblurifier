@@ -1,8 +1,15 @@
-# taistenator
+# The amazing Blockblurifier
+
+Quick 'n dirty 2 hour prototype.
+
+Upload a image, adjust and paint over the image with pixelated blocks. A quick prototype for a brand project.
+Performance is super horrible, but works on desktop Chrome at least.
+
+Try it at https://taistenator.netlify.app/
 
 ## CLI Commands
 
-``` bash
+```bash
 # install dependencies
 npm install
 
